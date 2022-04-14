@@ -11,18 +11,18 @@ import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const [signInWithGithub] = useSignInWithGithub(auth);
+    const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
 
     const navigate = useNavigate();
     let errorElement;
 
-    if (error) {
+    if (error || error1) {
         errorElement =  <div>
-            <p className="text-danger">Error: {error.message}</p>
+            <p className="text-danger">Error: {error?.message} {error1?.message}</p>
           </div>
       }
     
-      if(user){
+      if(user || user1){
           navigate('/home')
       }
 
