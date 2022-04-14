@@ -7,8 +7,6 @@ import auth from "../../../firebase.init";
 import { useNavigate } from "react-router-dom";
 
 
-// const auth = getAuth(app);
-
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
@@ -17,9 +15,7 @@ const SocialLogin = () => {
     let errorElement;
 
     if (error || error1) {
-        errorElement =  <div>
-            <p className="text-danger">Error: {error?.message} {error1?.message}</p>
-          </div>
+        errorElement = <p className="text-danger">Error: {error?.message} {error1?.message}</p>
       }
     
       if(user || user1){
